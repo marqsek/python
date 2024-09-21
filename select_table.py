@@ -1,4 +1,0 @@
-import pyodbc
-
-try:
-    connection =
