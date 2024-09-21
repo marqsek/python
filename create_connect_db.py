@@ -1,7 +1,7 @@
 import pyodbc
 import customtkinter
 
-customtkinter.set_appearance_mode(``"system") #set the view mode
+customtkinter.set_appearance_mode("system") #set the view mode
 customtkinter.set_default_color_theme("blue")#default color
 
 app = customtkinter.CTk() #window variable
