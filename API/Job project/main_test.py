@@ -19,7 +19,7 @@ if response.status_code == 200:
     csv_reader = csv.reader(StringIO(csv_content))
 
     # Save the CSV content to a file
-    with open('../output.csv', mode='w', newline='', encoding='utf-8') as file:
+    with open('output.csv', mode='w', newline='', encoding='utf-8') as file:
         csv_writer = csv.writer(file)
 
         # Write each row of the CSV
