@@ -36,7 +36,7 @@ for index, row in df.iterrows():
 
         # Extract the two fields: 'ticketId' and 'status'
         ticket_id = json_response.get('ticketId')
-        status = json_response.get('status')
+        status = json_response.get('status').strip()
 
         # Write the extracted fields to the list
         data_list.append([ticket_id, status])
@@ -50,6 +50,19 @@ df_output = pd.DataFrame(data_list, columns=['ticketId', 'status'])
 
 # Export the DataFrame to an Excel file
 output_file_name = "output.xlsx"
-df_output.to_excel(output_file_name, index=False)
+#df_output.to_excel(output_file_name, index=False)
+with pd.ExcelWriter(output_file_name, engine='xlsxwriter') as writer:
+    # Write the DataFrame to the Excel file
+    df_output.to_excel(writer, sheet_name='Sheet1', index=False)
+
+    # Access the workbook and worksheet objects from xlsxwriter
+    workbook = writer.book
+    worksheet = writer.sheets['Sheet1']
+
+    # Insert a formula
+    worksheet.write_formula('D2', '=UNIQUE(B2:B54)')
+
+    for row in range(2, 5):
+        worksheet.write_formula(f'E{row}', f'=COUNTIF(B2:B10001, D{row})')
 
 print(f"All data has been saved to {output_file_name}")
