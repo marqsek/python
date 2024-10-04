@@ -5,7 +5,7 @@ from io import StringIO
 url = 'https://customizations.zowie.dev/ecommerce/tickets/1127762561'
 headers = {
     'X-API-KEY': 'c895a35c365541c4ac22a61d13bc388d',
-    'Accept': 'text/csv',  # Requesting CSV response
+    'Accept': 'text/csv',  # Requesting CSV responsess
     'Content-Type': 'application/json'
 }
 
